@@ -1,0 +1,6 @@
+{
+  "name": "empatize-web",
+  "short_name": "empatize-web",
+  "start_url": "/",
+  "display": "standalone"
+}

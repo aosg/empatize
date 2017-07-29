@@ -1,0 +1,76 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../../bower_components/polymerfire/firebase-app.html">
+
+<link rel="import" href="./iconset-material.html">
+<link rel="import" href="./drawer-content.html">
+<link rel="import" href="./main-content.html">
+
+
+<dom-module id="empatize-web-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+        --app-primary-color: #630075;
+        --app-secundary-color: #AF00FA;
+      }
+      #mainAppToolbar {
+        background-color: var(--app-primary-color);
+        color: white;
+      }
+      #mainAppToolbar [main-title] {
+        text-align: center;
+      }
+    </style>
+    <firebase-app
+      app="empatize"
+      api-key="AIzaSyBY00TnNlW8Tfcf4rtDgERRad6oabubKB8"
+      auth-domain="empatize-62a3e.firebaseapp.com"
+      database-url="https://empatize-62a3e.firebaseio.com"
+      storage-bucket="empatize-62a3e.appspot.com">
+    </firebase-app>
+    <app-drawer-layout fullbleed>
+      <app-drawer slot="drawer">
+        <drawer-content></drawer-content>
+      </app-drawer>
+      <app-header-layout>
+        <app-header slot="header">
+          <app-toolbar id="mainAppToolbar">
+            <paper-icon-button id="menuButton" drawer-toggle icon="material:menu"></paper-icon-button>
+            <div main-title>Empatize</div>
+            <paper-icon-button icon="material:notifications"></paper-icon-button>
+          </app-toolbar>
+        </app-header>
+        <main-content></main-content>
+      </app-header-layout>
+    </app-drawer-layout>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class EmpatizeWebApp extends Polymer.Element {
+      static get is() { return 'empatize-web-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'empatize-web-app'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(EmpatizeWebApp.is, EmpatizeWebApp);
+  </script>
+</dom-module>

@@ -1,0 +1,88 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<!--
+`<campaign-card>` is Description
+
+@element CampaignCard
+-->
+<dom-module id="campaign-card">
+    <template>
+        <style>
+            :host {
+                display: block; 
+            }
+            .campaign-header { @apply --paper-font-headline; }
+            .campaign-light { color: var(--paper-grey-600); }
+            .campaign-location {
+                color: var(--app-primary-color);
+                float: right;
+                font-size: 15px;
+                vertical-align: middle;
+            }
+            .campaign-action {
+                color: var(--app-primary-color);
+            }
+            #shareButton {
+                float: right;
+            }
+        </style>
+        <paper-card>
+            <div class="card-content">
+                <div class="campaign-header">{{item.name}}
+                <div class="campaign-location campaign-light">
+                    <iron-icon icon="material:location-on"></iron-icon>
+                    <span>{{item.location}}</span>
+                </div>
+                </div>
+                <p>{{item.type}}</p>
+                <p class="campaign-light">{{item.description}} - {{item.date}}</p>
+            </div>
+            <div class="card-actions">
+                <div class="horizontal justified">
+                <paper-button
+                    id="openButton">
+                    Ajudar
+                </paper-button>
+                <paper-icon-button
+                    id="shareButton"
+                    icon="material:share">
+                </paper-icon-button>
+                </div>
+            </div>
+        </paper-card>
+    </template>
+
+    <script>
+        class CampaignCard extends Polymer.Element {
+
+            static get is() { return 'campaign-card'; }
+
+            static get properties() {
+                return {
+                    item: {
+                        type: Object
+                    }
+                };
+            }
+
+            constructor() {
+                super();
+            }
+
+            ready() {
+                super.ready();
+
+                Polymer.RenderStatus.afterNextRender(this, function() {
+                    
+                });
+            }
+
+        }
+
+        window.customElements.define(CampaignCard.is, CampaignCard);
+    </script>
+</dom-module>

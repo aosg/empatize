@@ -1,0 +1,74 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../../bower_components/paper-tabs/paper-tab.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-query.html">
+<link rel="import" href="./campaign-list.html">
+
+<!--
+`<main-content>` is Description
+
+@element MainContentElement
+-->
+<dom-module id="main-content">
+    <template>
+        <style>
+            :host {
+                display: block
+            }
+            #mainTabs {
+                --paper-tabs-selection-bar-color: var(--app-primary-color);
+                --paper-tab-ink: var(--app-secundary-color);
+            }
+            #pageArea {
+                padding-top: 15px;
+            }
+        </style>
+        <paper-tabs
+            id="mainTabs"
+            selected=0>
+            <paper-tab>Campanhas</paper-tab>
+            <paper-tab>Minhas</paper-tab>
+        </paper-tabs>
+        <!-- Campain List -->
+        <firebase-query
+            app="empatize"
+            path="campaign/public"
+            data="{{campaignPublicData}}">
+        </firebase-query>
+        <div id="pageArea">
+            <campaign-list
+                items="{{campaignPublicData}}">
+            </campaign-list>
+        </div>
+    </template>
+
+    <script>
+        class MainContentElement extends Polymer.Element {
+
+            static get is() { return 'main-content'; }
+
+            static get properties() {
+                return {
+                    campaignPublicData: {
+                        type: Object
+                    }
+                };
+            }
+
+            constructor() {
+                super();
+            }
+
+            ready() {
+                super.ready();
+
+                Polymer.RenderStatus.afterNextRender(this, function() {
+                    
+                });
+            }
+
+        }
+
+        window.customElements.define(MainContentElement.is, MainContentElement);
+    </script>
+</dom-module>

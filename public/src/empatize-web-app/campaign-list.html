@@ -1,0 +1,62 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="./campaign-card.html">
+
+<!--
+`<campaign-list>` is Description
+
+@element CampaignListElement
+-->
+<dom-module id="campaign-list">
+    <template>
+        <style>
+            :host {
+                display: block;
+                width: 100%;
+            }
+            campaign-card {
+                margin: 0 auto;
+                max-width: 320px; 
+                margin-bottom: 10px; 
+            }
+            campaign-card:last-child {
+                margin-bottom: 0;
+            } 
+        </style>
+        <template is="dom-repeat" items={{items}}>
+            <campaign-card item={{item}}></campaign-card>
+        </template>
+    </template>
+
+    <script>
+        class CampaignListElement extends Polymer.Element {
+
+            static get is() { return 'campaign-list'; }
+
+            static get properties() {
+                return {
+                    items: {
+                        type: Object,
+                        reflectToAttribute: true,
+                        notify: true
+                    }    
+                };
+            }
+
+            constructor() {
+                super();
+            }
+
+            ready() {
+                super.ready();
+
+                Polymer.RenderStatus.afterNextRender(this, function() {
+                    
+                });
+            }
+
+        }
+
+        window.customElements.define(CampaignListElement.is, CampaignListElement);
+    </script>
+</dom-module>
