@@ -10,7 +10,8 @@
     "polymerfire": "firebase/polymerfire#^2.1.0",
     "paper-material": "PolymerElements/paper-material#^2.0.0",
     "paper-card": "PolymerElements/paper-card#^2.0.0",
-    "paper-button": "PolymerElements/paper-button#^2.0.0"
+    "paper-button": "PolymerElements/paper-button#^2.0.0",
+    "iron-icon": "PolymerElements/iron-icon#^2.0.1"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
